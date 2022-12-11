@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: 3a4f24d38bde6764284239f01f356138, type: 3}
+  itemPrefab: {fileID: 5713644245566484430, guid: f57fcaf3e478c05459b66faa6cac4d90, type: 3}
+  ammoDisplay: {fileID: 4703066472931438897, guid: 69720b3dfff60d04cb860696c14b0291, type: 3}
+  stackable: 0
+  type: 3
+  description: x5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+    vulputate posuere felis, ornare tempus libero rhoncus eget. Integer vel volutpat
+    risus. Pellentesque a purus ultricies, sollicitudin urna et, ultricies nunc.
+    Integer vel volutpat risus. Pellentesque a purus ultricies, sollicitudin urna
+    et, ultricies nunc.
+  data:
+    Name: Shotgun
+    Id: 3
+    Description: 
+    uiSprite: {fileID: 0}
+    buffs:
+    - attribute: 3
+      value: 0
+      min: 15
+      max: 18
+    - attribute: 4
+      value: 0
+      min: 80
+      max: 80
+    - attribute: 5
+      value: 0
+      min: 2
+      max: 2
+    - attribute: 6
+      value: 0
+      min: 5
+      max: 5
+    - attribute: 7
+      value: 0
+      min: 3
+      max: 3
+    - attribute: 8
+      value: 0
+      min: 0.4
+      max: 0.4
+    - attribute: 9
+      value: 0
+      min: 5
+      max: 5
