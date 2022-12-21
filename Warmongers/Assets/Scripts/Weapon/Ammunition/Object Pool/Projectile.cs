@@ -4,7 +4,7 @@ using UnityEngine;
 public class Projectile : AutoDestroyPoolableObject
 {
     [HideInInspector] public Rigidbody rb;
-    [HideInInspector] public float attackDamage;
+    [HideInInspector] public int attackDamage;
 
     public GameObject hitEffect;
     public float intensity = 1f;

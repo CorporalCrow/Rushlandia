@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 489137174128318613}
   - component: {fileID: 428447551660711949}
   - component: {fileID: 3659020620605688660}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sniper Rifle Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoDestroyTime: 5
+  rb: {fileID: 0}
   attackDamage: 0
   hitEffect: {fileID: 2501312620747898427, guid: f3831ce6cf8a52f4fb27104ba24663d6, type: 3}
   intensity: 0.75

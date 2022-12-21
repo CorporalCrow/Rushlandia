@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 489137174128318613}
   - component: {fileID: 428447551660711949}
   - component: {fileID: -3905310229794568586}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Machine Gun Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoDestroyTime: 5
+  rb: {fileID: 0}
   attackDamage: 0
   hitEffect: {fileID: 2501312620747898427, guid: 4c84c9044312bb14ab4c3f0b6a8031c1, type: 3}
   intensity: 0.5

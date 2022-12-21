@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [HideInInspector] public ItemObject[] ItemObjects;
 
@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
                                                 switch (equipmentSlots[i].item.buffs[j].attribute)
                                                 {
                                                     case Attributes.Damage:
-                                                        mainHand.GetComponent<Gun>().attackDamage = Mathf.Round(equipmentSlots[i].item.buffs[j].value * 100) / 100;
+                                                        mainHand.GetComponent<Gun>().attackDamage = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.ProjectileSpeed:
                                                         mainHand.GetComponent<Gun>().bulletSpeed = equipmentSlots[i].item.buffs[j].value;
@@ -289,18 +289,6 @@ public class Player : MonoBehaviour
         if (attribute.type == Attributes.Speed) GetComponent<PlayerController>().setSpeed(Mathf.Round(attribute.value.ModifiedValue * 100) / 100);
     }
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage * defensePercentage;
-
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Dead");
-        }
-    }
-
     public void setHealth(float newHealth)
     {
         currentHealth = newHealth - (maxHealth - currentHealth);
@@ -312,6 +300,7 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Dead");
+            gameObject.SetActive(false);
         }
     }
 
@@ -321,6 +310,24 @@ public class Player : MonoBehaviour
     {
         inventory.Clear();
         equipment.Clear();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage * defensePercentage;
+
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Dead");
+            gameObject.SetActive(false);
+        }
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }
 

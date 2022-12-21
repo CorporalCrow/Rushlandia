@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
         projectile = GetComponent<Projectile>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (projectile.rb.velocity.magnitude <= 60)
             projectile.rb.velocity *= 1.1f;

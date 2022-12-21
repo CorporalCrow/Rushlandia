@@ -26,12 +26,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
   - Player
+  - Enemy
+  - EnemyAttackRadius
   - Ground
-  - 
-  - 
-  - 
+  - EnemyBullets
+  - Bullets
   - 
   - 
   - 

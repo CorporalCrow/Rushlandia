@@ -5,7 +5,7 @@ public class Gun : MonoBehaviour
 {
     private GameObject inventory;
 
-    [HideInInspector] public float attackDamage;
+    [HideInInspector] public int attackDamage;
     [HideInInspector] public float bulletSpeed;
 
     [HideInInspector] public float fireRate;
@@ -35,9 +35,9 @@ public class Gun : MonoBehaviour
     {
         bulletPool = ObjectPool.CreateInstance(bulletPrefab, 40);
         if (transform.parent.tag == "Main Hand")
-            GameObject.FindGameObjectWithTag("Object Pool").tag = "Main Object Pool";
+            GameObject.Find(bulletPrefab.name + " Pool").tag = "Main Object Pool";
         if (transform.parent.tag == "Off Hand")
-            GameObject.FindGameObjectWithTag("Object Pool").tag = "Off Object Pool";
+            GameObject.Find(bulletPrefab.name + " Pool").tag = "Off Object Pool";
     }
 
     private void Start()
@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
         GameObject FindChildWithTag(GameObject parent, string tag)
         {
             GameObject child = null;
-            foreach (Transform t in transform)
+            foreach (Transform t in transform.parent.parent)
                 if (t.tag == "Fire Point")
                 {
                     child = t.transform.gameObject;

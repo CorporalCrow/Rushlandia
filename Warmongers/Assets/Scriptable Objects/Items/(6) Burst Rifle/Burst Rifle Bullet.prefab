@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 489137174128318613}
   - component: {fileID: 428447551660711949}
   - component: {fileID: 6708974295567482702}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Burst Rifle Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoDestroyTime: 5
+  rb: {fileID: 0}
   attackDamage: 0
   hitEffect: {fileID: 2501312620747898427, guid: c18239b1c7f172f4eaebe459e6cf1474, type: 3}
   intensity: 1
