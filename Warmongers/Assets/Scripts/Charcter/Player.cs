@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -18,8 +17,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public Attribute[] attributes;
 
-    [HideInInspector] public Transform mainHand;
-    [HideInInspector] public Transform offHand;
+    public Transform mainHand;
+    public Transform offHand;
     public Transform mainHandTransform;
     public Transform offHandTransform;
 
@@ -79,11 +78,18 @@ public class Player : MonoBehaviour, IDamageable
                             switch (_slot.ItemObject.type)
                             {
                                 case ItemType.Weapon:
-                                    Destroy(mainHand.gameObject);
+                                    if (mainHand != null)
+                                    {
+                                        Destroy(mainHand.gameObject);
+                                    }
                                     break;
                                 case ItemType.Gun:
-                                    Destroy(mainHand.gameObject);
-                                    Destroy(mainHandAmmo.gameObject);
+                                    if (mainHand != null)
+                                    {
+                                        Destroy(mainHand.gameObject);
+                                        Destroy(mainHandAmmo.gameObject);
+                                    }
+                                    
                                     break;
                             }
                             break;
@@ -91,11 +97,18 @@ public class Player : MonoBehaviour, IDamageable
                             switch (_slot.ItemObject.type)
                             {
                                 case ItemType.Weapon:
-                                    Destroy(offHand.gameObject);
+                                    if (offHand != null)
+                                    {
+                                        Destroy(offHand.gameObject);
+                                    }
                                     break;
                                 case ItemType.Gun:
-                                    Destroy(offHand.gameObject);
-                                    Destroy(offHandAmmo.gameObject);
+                                    if (offHand != null)
+                                    {
+                                        Destroy(offHand.gameObject);
+                                        Destroy(offHandAmmo.gameObject);
+                                    }
+                                    
                                     break;
                             }
                             break;

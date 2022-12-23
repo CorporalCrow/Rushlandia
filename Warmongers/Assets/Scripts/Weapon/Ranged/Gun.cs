@@ -34,10 +34,21 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         bulletPool = ObjectPool.CreateInstance(bulletPrefab, 40);
+        
+        var newBulletPool = GameObject.FindGameObjectsWithTag("Object Pool");
+
         if (transform.parent.tag == "Main Hand")
-            GameObject.Find(bulletPrefab.name + " Pool").tag = "Main Object Pool";
+            for (int i = 0; i < newBulletPool.Length; i++)
+            {
+                if (newBulletPool[i].name == bulletPrefab.name + " Pool")
+                    newBulletPool[i].tag = "Main Object Pool";
+            }
         if (transform.parent.tag == "Off Hand")
-            GameObject.Find(bulletPrefab.name + " Pool").tag = "Off Object Pool";
+            for (int i = 0; i < newBulletPool.Length; i++)
+            {
+                if (newBulletPool[i].name == bulletPrefab.name + " Pool")
+                    newBulletPool[i].tag = "Off Object Pool";
+            }
     }
 
     private void Start()

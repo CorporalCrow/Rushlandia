@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Aim();
     }
 
     void Update()
     {
+        Aim();
         if (Input.GetKeyDown(KeyCode.I) && inventory.gameObject.activeSelf == true)
             inventory.gameObject.SetActive(false);
         else if (Input.GetKeyDown(KeyCode.I) && inventory.gameObject.activeSelf == false)

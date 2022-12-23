@@ -3,6 +3,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     public float areaOfEffectRadius = 4f;
+    public float acceleration = 1f;
 
     private Projectile projectile;
 
@@ -14,7 +15,7 @@ public class Rocket : MonoBehaviour
     private void FixedUpdate()
     {
         if (projectile.rb.velocity.magnitude <= 60)
-            projectile.rb.velocity *= 1.1f;
+            projectile.rb.velocity *= acceleration;
     }
 
     private void OnTriggerEnter(Collider collision)
