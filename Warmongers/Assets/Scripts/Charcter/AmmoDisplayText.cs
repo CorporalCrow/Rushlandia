@@ -18,9 +18,9 @@ public class AmmoDisplayText : MonoBehaviour
 
     public void AmmoDisplay()
     {
-        if (targetWeapon.GetComponent<Gun>().currentAmmo > 0)
+        if (targetWeapon.GetComponent<Ranged>().currentAmmo > 0)
         {
-            ammoDisplay.text = targetWeapon.GetComponent<Gun>().currentAmmo.ToString();
+            ammoDisplay.text = targetWeapon.GetComponent<Ranged>().currentAmmo.ToString();
         }
         else
         {

@@ -7,6 +7,8 @@ public class Grenade : MonoBehaviour
 
     float countdown;
 
+    private float velocityNeededToReachDestination;
+
     private Projectile projectile;
 
     private void Awake()
@@ -17,7 +19,7 @@ public class Grenade : MonoBehaviour
     private void OnEnable()
     {
         countdown = delay;
-        projectile.rb.AddForce(transform.up * 2f, ForceMode.VelocityChange);
+        projectile.rb.AddForce(transform.up * velocityNeededToReachDestination, ForceMode.VelocityChange);
     }
 
     void Update()

@@ -21,29 +21,39 @@ MonoBehaviour:
       item:
         Name: 
         Id: -1
+        Description: 
+        uiSprite: {fileID: 0}
         buffs: []
       amount: 0
     - AllowedItems: 0200000003000000
       item:
         Name: 
         Id: -1
+        Description: 
+        uiSprite: {fileID: 0}
         buffs: []
       amount: 0
     - AllowedItems: 0300000002000000
       item:
         Name: 
         Id: -1
+        Description: 
+        uiSprite: {fileID: 0}
         buffs: []
       amount: 0
     - AllowedItems: 05000000
       item:
         Name: 
         Id: -1
+        Description: 
+        uiSprite: {fileID: 0}
         buffs: []
       amount: 0
     - AllowedItems: 04000000
       item:
         Name: 
         Id: -1
+        Description: 
+        uiSprite: {fileID: 0}
         buffs: []
       amount: 0

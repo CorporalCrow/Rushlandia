@@ -6,7 +6,7 @@ public enum ItemType
     Food,
     Helmet,
     Weapon,
-    Gun,
+    Ranged,
     Leggings,
     Chest,
     Default
@@ -19,7 +19,7 @@ public enum Attributes
     Speed,
     Damage,
     Projectile‏‏‎Speed,
-    Firerate,
+    FireRate,
     MaxAmmo,
     ReloadTime,
     Spread,

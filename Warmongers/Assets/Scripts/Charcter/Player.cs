@@ -1,24 +1,20 @@
 ﻿using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour
 {
+    PlayerStats playerStats;
+    PlayerController playerController;
+
     [HideInInspector] public ItemObject[] ItemObjects;
-
-    [HideInInspector] public float maxHealth;
-    [ReadOnly] public float currentHealth;
-    
-    [ReadOnly] public float defensePercentage;
-
-    public HealthBar healthBar;
 
     public InventoryObject inventory;
     public InventoryObject equipment;
 
     public Attribute[] attributes;
 
-    public Transform mainHand;
-    public Transform offHand;
+    [HideInInspector] public Transform mainHand;
+    [HideInInspector] public Transform offHand;
     public Transform mainHandTransform;
     public Transform offHandTransform;
 
@@ -29,12 +25,12 @@ public class Player : MonoBehaviour, IDamageable
 
     public InventorySlot[] equipmentSlots { get { return equipment.Container.Slots; } }
 
-    private Gun gun;
+    [HideInInspector] public bool fPressed = false;
 
     private void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        playerStats = GetComponent<PlayerStats>();
+        playerController = GetComponent<PlayerController>();
 
         for (int i = 0; i < attributes.Length; i++)
         {
@@ -83,7 +79,7 @@ public class Player : MonoBehaviour, IDamageable
                                         Destroy(mainHand.gameObject);
                                     }
                                     break;
-                                case ItemType.Gun:
+                                case ItemType.Ranged:
                                     if (mainHand != null)
                                     {
                                         Destroy(mainHand.gameObject);
@@ -93,7 +89,7 @@ public class Player : MonoBehaviour, IDamageable
                                     break;
                             }
                             break;
-                        case ItemType.Gun:
+                        case ItemType.Ranged:
                             switch (_slot.ItemObject.type)
                             {
                                 case ItemType.Weapon:
@@ -102,7 +98,7 @@ public class Player : MonoBehaviour, IDamageable
                                         Destroy(offHand.gameObject);
                                     }
                                     break;
-                                case ItemType.Gun:
+                                case ItemType.Ranged:
                                     if (offHand != null)
                                     {
                                         Destroy(offHand.gameObject);
@@ -154,7 +150,7 @@ public class Player : MonoBehaviour, IDamageable
                                 case ItemType.Weapon:
                                     mainHand = Instantiate(_slot.ItemObject.itemPrefab, mainHandTransform).transform;
                                     break;
-                                case ItemType.Gun:
+                                case ItemType.Ranged:
                                     mainHand = Instantiate(_slot.ItemObject.itemPrefab, mainHandTransform).transform;
 
                                     mainHandAmmo = Instantiate(_slot.ItemObject.ammoDisplay, mainHandAmmoTransform).transform;
@@ -169,28 +165,28 @@ public class Player : MonoBehaviour, IDamageable
                                                 switch (equipmentSlots[i].item.buffs[j].attribute)
                                                 {
                                                     case Attributes.Damage:
-                                                        mainHand.GetComponent<Gun>().attackDamage = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
+                                                        mainHand.GetComponent<Ranged>().attackDamage = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.ProjectileSpeed:
-                                                        mainHand.GetComponent<Gun>().bulletSpeed = equipmentSlots[i].item.buffs[j].value;
+                                                        mainHand.GetComponent<Ranged>().bulletSpeed = Mathf.Round(equipmentSlots[i].item.buffs[j].value * 10) / 10;
                                                         break;
-                                                    case Attributes.Firerate:
-                                                        mainHand.GetComponent<Gun>().fireRate = equipmentSlots[i].item.buffs[j].value;
+                                                    case Attributes.FireRate:
+                                                        mainHand.GetComponent<Ranged>().fireRate = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.MaxAmmo:
-                                                        mainHand.GetComponent<Gun>().maxAmmo = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
+                                                        mainHand.GetComponent<Ranged>().maxAmmo = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.ReloadTime:
-                                                        mainHand.GetComponent<Gun>().reloadTime = equipmentSlots[i].item.buffs[j].value;
+                                                        mainHand.GetComponent<Ranged>().reloadTime = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.Spread:
-                                                        mainHand.GetComponent<Gun>().spreadFactor = equipmentSlots[i].item.buffs[j].value;
+                                                        mainHand.GetComponent<Ranged>().spreadFactor = Mathf.Round(equipmentSlots[i].item.buffs[j].value * 100) / 100;
                                                         break;
                                                     case Attributes.ProjectileCount:
-                                                        mainHand.GetComponent<Gun>().projectilesPerVolley = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
+                                                        mainHand.GetComponent<Ranged>().projectilesPerVolley = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.VolleyDelay:
-                                                        mainHand.GetComponent<Gun>().timeBetweenVolley = equipmentSlots[i].item.buffs[j].value;
+                                                        mainHand.GetComponent<Ranged>().timeBetweenVolley = Mathf.Round(equipmentSlots[i].item.buffs[j].value * 10) / 10;
                                                         break;
                                                 }
                                             }
@@ -199,13 +195,13 @@ public class Player : MonoBehaviour, IDamageable
                                     break;
                             }
                             break;
-                        case ItemType.Gun:
+                        case ItemType.Ranged:
                             switch (_slot.ItemObject.type)
                             {
                                 case ItemType.Weapon:
                                     offHand = Instantiate(_slot.ItemObject.itemPrefab, offHandTransform).transform;
                                     break;
-                                case ItemType.Gun:
+                                case ItemType.Ranged:
                                     offHand = Instantiate(_slot.ItemObject.itemPrefab, offHandTransform).transform;
                                     
                                     offHandAmmo = Instantiate(_slot.ItemObject.ammoDisplay, offHandAmmoTransform).transform;
@@ -220,28 +216,28 @@ public class Player : MonoBehaviour, IDamageable
                                                 switch (equipmentSlots[i].item.buffs[j].attribute)
                                                 {
                                                     case Attributes.Damage:
-                                                        offHand.GetComponent<Gun>().attackDamage = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
+                                                        offHand.GetComponent<Ranged>().attackDamage = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.ProjectileSpeed:
-                                                        offHand.GetComponent<Gun>().bulletSpeed = equipmentSlots[i].item.buffs[j].value;
+                                                        offHand.GetComponent<Ranged>().bulletSpeed = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value * 10) / 10;
                                                         break;
-                                                    case Attributes.Firerate:
-                                                        offHand.GetComponent<Gun>().fireRate = equipmentSlots[i].item.buffs[j].value;
+                                                    case Attributes.FireRate:
+                                                        offHand.GetComponent<Ranged>().fireRate = Mathf.Round(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.MaxAmmo:
-                                                        offHand.GetComponent<Gun>().maxAmmo = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
+                                                        offHand.GetComponent<Ranged>().maxAmmo = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.ReloadTime:
-                                                        offHand.GetComponent<Gun>().reloadTime = equipmentSlots[i].item.buffs[j].value;
+                                                        offHand.GetComponent<Ranged>().reloadTime = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.Spread:
-                                                        offHand.GetComponent<Gun>().spreadFactor = equipmentSlots[i].item.buffs[j].value;
+                                                        offHand.GetComponent<Ranged>().spreadFactor = Mathf.Round(equipmentSlots[i].item.buffs[j].value * 100) / 100;
                                                         break;
                                                     case Attributes.ProjectileCount:
-                                                        offHand.GetComponent<Gun>().projectilesPerVolley = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
+                                                        offHand.GetComponent<Ranged>().projectilesPerVolley = Mathf.RoundToInt(equipmentSlots[i].item.buffs[j].value);
                                                         break;
                                                     case Attributes.VolleyDelay:
-                                                        offHand.GetComponent<Gun>().timeBetweenVolley = equipmentSlots[i].item.buffs[j].value;
+                                                        offHand.GetComponent<Ranged>().timeBetweenVolley = Mathf.Round(equipmentSlots[i].item.buffs[j].value * 10) / 10;
                                                         break;
                                                 }
                                             }
@@ -261,8 +257,6 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private bool fPressed = false;
-
     public void OnTriggerStay(Collider other)
     {
         var groundItem = other.GetComponent<GroundItem>();
@@ -278,6 +272,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        // Temp for testing saving and loading
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inventory.Save();
@@ -288,59 +283,20 @@ public class Player : MonoBehaviour, IDamageable
             inventory.Load();
             equipment.Load();
         }
-        if (Input.GetKeyDown(KeyCode.F))
-            fPressed = true;
-        else
-            fPressed = false;
     }
 
     public void AttributeModified(Attribute attribute)
     {
-        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-        if (attribute.type == Attributes.Health) setHealth(Mathf.Round(attribute.value.ModifiedValue * 100) / 100);
-        if (attribute.type == Attributes.Defense) setDefense(Mathf.Round(attribute.value.ModifiedValue * 100) / 100);
-        if (attribute.type == Attributes.Speed) GetComponent<PlayerController>().setSpeed(Mathf.Round(attribute.value.ModifiedValue * 100) / 100);
+        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", Mathf.RoundToInt(attribute.value.ModifiedValue)));
+        if (attribute.type == Attributes.Health) playerStats.setHealth(Mathf.RoundToInt(attribute.value.ModifiedValue));
+        if (attribute.type == Attributes.Defense) playerStats.setDefense(Mathf.RoundToInt(attribute.value.ModifiedValue));
+        if (attribute.type == Attributes.Speed) playerController.setSpeed(Mathf.RoundToInt(attribute.value.ModifiedValue));
     }
-
-    public void setHealth(float newHealth)
-    {
-        currentHealth = newHealth - (maxHealth - currentHealth);
-        maxHealth = newHealth;
-
-        healthBar.SetMaxHealth(maxHealth);
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Dead");
-            gameObject.SetActive(false);
-        }
-    }
-
-    public void setDefense(float newDefense) => defensePercentage = 1 - (newDefense / (newDefense + 100));
 
     private void OnApplicationQuit()
     {
         inventory.Clear();
         equipment.Clear();
-    }
-
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage * defensePercentage;
-
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Dead");
-            gameObject.SetActive(false);
-        }
-    }
-
-    public Transform GetTransform()
-    {
-        return transform;
     }
 }
 

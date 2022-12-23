@@ -1,9 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Launcher : MonoBehaviour
 {
     Ranged ranged;
+    private Camera mainCamera;
+
+    public float upthrust;
+    public float forwardthrust;
+
+    [SerializeField] private LayerMask mask;
 
     [HideInInspector] public bool isReloading = false;
 
@@ -13,9 +19,12 @@ public class Gun : MonoBehaviour
     [HideInInspector] public bool mainHandAbleToShoot = false;
     [HideInInspector] public bool offHandAbleToShoot = false;
 
+    private float distance;
+
     private void Awake()
     {
         ranged = GetComponent<Ranged>();
+        mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -25,6 +34,14 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, mask))
+        {
+            distance = Vector3.Distance(raycastHit.point, transform.position);
+        }
+            
+
         //Shooting
         if (Time.time >= nextTimeToFire && mainHandAbleToShoot && burstAttackFinished)
         {
@@ -105,14 +122,14 @@ public class Gun : MonoBehaviour
                     instance.transform.SetParent(GameObject.FindGameObjectWithTag("Main Object Pool").transform, false);
                     instance.transform.localPosition = ranged.firePoint.position;
                     instance.GetComponent<Projectile>().attackDamage = ranged.attackDamage;
-                    instance.GetComponent<Rigidbody>().AddForce(ranged.bulletSpeed * direction, ForceMode.Impulse);
+                    instance.GetComponent<Rigidbody>().AddForce(ranged.bulletSpeed * direction * distance / 10 + transform.up * distance / 6, ForceMode.VelocityChange);
                 }
                 if (instance.transform.parent.tag == "Off Object Pool")
                 {
                     instance.transform.SetParent(GameObject.FindGameObjectWithTag("Off Object Pool").transform, false);
                     instance.transform.localPosition = ranged.firePoint.position;
                     instance.GetComponent<Projectile>().attackDamage = ranged.attackDamage;
-                    instance.GetComponent<Rigidbody>().AddForce(ranged.bulletSpeed * direction, ForceMode.Impulse);
+                    instance.GetComponent<Rigidbody>().AddForce(ranged.bulletSpeed * direction * distance / 10 + transform.up * distance / 6, ForceMode.VelocityChange);
                 }
             }
 

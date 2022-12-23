@@ -42,8 +42,8 @@ MonoBehaviour:
       max: 1
     - attribute: 6
       value: 0
-      min: 3
-      max: 3
+      min: 4
+      max: 4
     - attribute: 7
       value: 0
       min: 5

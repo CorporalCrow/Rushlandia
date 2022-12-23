@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8025926980017639341}
   - component: {fileID: 9295078607192620}
   - component: {fileID: 4835218104738962262}
+  - component: {fileID: -796181058158282211}
   m_Layer: 7
   m_Name: Grenade Launcher
   m_TagString: Weapon
@@ -96,17 +97,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b943801494f93d41bcf6838f74195ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   attackDamage: 0
   bulletSpeed: 0
   fireRate: 0
   maxAmmo: 1
   currentAmmo: 0
   reloadTime: 0
-  isReloading: 0
-  mainHandAbleToShoot: 0
-  offHandAbleToShoot: 0
   spreadFactor: 0
   projectilesPerVolley: 1
   timeBetweenVolley: 0
   firePoint: {fileID: 0}
   bulletPrefab: {fileID: 428447551660711949, guid: c09cde3926fc19d44b6f2a372c13168c, type: 3}
+--- !u!114 &-796181058158282211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713644245566484430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e226ba25356e341b2a88ac976c7da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 513
+  isReloading: 0
+  mainHandAbleToShoot: 0
+  offHandAbleToShoot: 0

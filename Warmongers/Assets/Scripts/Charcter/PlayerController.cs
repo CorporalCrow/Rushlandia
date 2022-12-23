@@ -7,17 +7,24 @@ public class PlayerController : MonoBehaviour
 
     public Canvas inventory;
 
-    [SerializeField] [ReadOnly] public float speed;
+    [HideInInspector] public int speed;
+
+    Player player;
 
     private Camera mainCamera;
 
     Rigidbody rb;
 
-    void Start()
+    private void Awake()
     {
-        mainCamera = Camera.main;
-        inventory.gameObject.SetActive(false);
+        player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
+    }
+
+    void Start()
+    {   
+        inventory.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -28,13 +35,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Aim();
+        if (Input.GetKeyDown(KeyCode.F))
+            player.fPressed = true;
+        else
+            player.fPressed = false;
         if (Input.GetKeyDown(KeyCode.I) && inventory.gameObject.activeSelf == true)
             inventory.gameObject.SetActive(false);
         else if (Input.GetKeyDown(KeyCode.I) && inventory.gameObject.activeSelf == false)
             inventory.gameObject.SetActive(true);
     }
 
-    public void setSpeed(float newSpeed) => speed = newSpeed;
+    public void setSpeed(int newSpeed) => speed = newSpeed;
 
     private void Move()
     {
