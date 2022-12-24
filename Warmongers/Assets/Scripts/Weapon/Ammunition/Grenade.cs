@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class Grenade : Projectile
 {
     public float areaOfEffectRadius = 4f;
     public float delay;
@@ -9,17 +9,10 @@ public class Grenade : MonoBehaviour
 
     private float velocityNeededToReachDestination;
 
-    private Projectile projectile;
-
-    private void Awake()
-    {
-        projectile = GetComponent<Projectile>();
-    }
-
-    private void OnEnable()
+    public override void OnEnable()
     {
         countdown = delay;
-        projectile.rb.AddForce(transform.up * velocityNeededToReachDestination, ForceMode.VelocityChange);
+        rb.AddForce(transform.up * velocityNeededToReachDestination, ForceMode.VelocityChange);
     }
 
     void Update()
@@ -34,10 +27,9 @@ public class Grenade : MonoBehaviour
     void Explode()
     {
         // Show effect
-        GameObject effect = Instantiate(projectile.hitEffect, transform.position, Quaternion.identity);
-        CinemachineShake.Instance.ShakeCamera(projectile.intensity, projectile.time);
+        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        CinemachineShake.Instance.ShakeCamera(intensity, time);
         Destroy(effect, 1);
-        Debug.Log("explode");
 
         // Damage nearby objects
         Collider[] colliders = Physics.OverlapSphere(transform.position, areaOfEffectRadius);
@@ -46,7 +38,7 @@ public class Grenade : MonoBehaviour
         {
             if (c.GetComponent<Enemy>())
             {
-                c.gameObject.GetComponent<Enemy>().TakeDamage(projectile.attackDamage);
+                c.gameObject.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
         }
 

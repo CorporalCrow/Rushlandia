@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6801721627559979518}
   - component: {fileID: 5320203002690795321}
   - component: {fileID: 489137174128318613}
-  - component: {fileID: 428447551660711949}
   - component: {fileID: 5479681222840010563}
   m_Layer: 11
   m_Name: Assault Rifle Bullet
@@ -116,24 +115,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &428447551660711949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450973731740136755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bda3b08a188a94ebc9833a420f8c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoDestroyTime: 5
-  rb: {fileID: 0}
-  attackDamage: 0
-  hitEffect: {fileID: 2501312620747898427, guid: 33e12283a8163a943ab80616398b4b47, type: 3}
-  intensity: 0.75
-  time: 0.5
 --- !u!114 &5479681222840010563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1744ffbe9c9d3be4e9ca785b6aceb756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoDestroyTime: 5
+  rb: {fileID: 0}
+  attackDamage: 0
+  hitEffect: {fileID: 2501312620747898427, guid: 33e12283a8163a943ab80616398b4b47, type: 3}
+  intensity: 0.75
+  time: 0.5

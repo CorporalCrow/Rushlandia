@@ -7,21 +7,29 @@ public class EnemyBullet : PoolableObject
     public float moveSpeed = 2f;
     public int damage = 5;
     public Rigidbody rb;
+    protected Transform target;
 
-    private const string DISABLE_METHOD_NAME = "Disable";
+    protected const string DISABLE_METHOD_NAME = "Disable";
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         CancelInvoke(DISABLE_METHOD_NAME);
         Invoke(DISABLE_METHOD_NAME, autoDestroyTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void Spawn(Vector3 forward, int damage, Transform target)
+    {
+        this.damage = damage;
+        this.target = target;
+        rb.AddForce(forward * moveSpeed, ForceMode.VelocityChange);
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Bullet")
         {
@@ -36,7 +44,7 @@ public class EnemyBullet : PoolableObject
         }
     }
 
-    private void Disable()
+    protected void Disable()
     {
         CancelInvoke(DISABLE_METHOD_NAME);
         rb.velocity = Vector3.zero;

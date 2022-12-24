@@ -48,10 +48,10 @@ public class RangedAttackRadius : AttackRadius
                 {
                     bullet = poolableObject.GetComponent<EnemyBullet>();
 
-                    bullet.damage = damage;
                     bullet.transform.position = transform.position + bulletSpawnOffset;
                     bullet.transform.rotation = agent.transform.rotation;
-                    bullet.rb.AddForce(agent.transform.forward * bulletPrefab.moveSpeed, ForceMode.VelocityChange);
+
+                    bullet.Spawn(agent.transform.forward, damage, targetDamageable.GetTransform());
                 }
             }
             else

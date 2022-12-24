@@ -1,14 +1,7 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Projectile
 {
-    private Projectile projectile;
-
-    private void Awake()
-    {
-        projectile = GetComponent<Projectile>();
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
         switch (collision.gameObject.tag)
@@ -20,7 +13,7 @@ public class Bullet : MonoBehaviour
                 Impact();
                 break;
             case "Enemy":
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(projectile.attackDamage);
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(attackDamage);
                 Impact();
                 break;
         }
@@ -28,8 +21,8 @@ public class Bullet : MonoBehaviour
 
     public void Impact()
     {
-        GameObject effect = Instantiate(projectile.hitEffect, transform.position, Quaternion.identity);
-        CinemachineShake.Instance.ShakeCamera(projectile.intensity, projectile.time);
+        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        CinemachineShake.Instance.ShakeCamera(intensity, time);
         Destroy(effect, 1);
 
         gameObject.SetActive(false);

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7195027227421619813}
   - component: {fileID: 8025926980017639341}
   - component: {fileID: 9295078607192620}
-  - component: {fileID: 4835218104738962262}
   - component: {fileID: 7434937071038002346}
   m_Layer: 7
   m_Name: Pistol
@@ -85,30 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4835218104738962262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5713644245566484430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b943801494f93d41bcf6838f74195ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  attackDamage: 0
-  bulletSpeed: 0
-  fireRate: 0
-  maxAmmo: 1
-  currentAmmo: 0
-  reloadTime: 0
-  spreadFactor: 0
-  projectilesPerVolley: 1
-  timeBetweenVolley: 0
-  firePoint: {fileID: 0}
-  bulletPrefab: {fileID: 428447551660711949, guid: 316a6397e32b5154e8f96bd5dac0aaa2, type: 3}
 --- !u!114 &7434937071038002346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +96,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d189e3f34313543a24dcc9d6d76d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 7439304113257423100, guid: 316a6397e32b5154e8f96bd5dac0aaa2, type: 3}
+  firePoint: {fileID: 0}
+  inventory: {fileID: 0}
+  attackDamage: 0
+  bulletSpeed: 0
+  fireRate: 0
+  maxAmmo: 0
+  currentAmmo: 0
+  reloadTime: 0
   isReloading: 0
+  spreadFactor: 0
+  projectilesPerVolley: 1
+  timeBetweenVolley: 0
+  nextTimeToFire: 0
+  burstAttackFinished: 1
   mainHandAbleToShoot: 0
   offHandAbleToShoot: 0

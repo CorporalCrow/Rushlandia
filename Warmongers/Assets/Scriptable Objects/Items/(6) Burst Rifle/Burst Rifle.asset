@@ -58,5 +58,5 @@ MonoBehaviour:
       max: 3
     - attribute: 10
       value: 0
-      min: 0.05
-      max: 0.05
+      min: 0.08
+      max: 0.08

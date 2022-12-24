@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6801721627559979518}
   - component: {fileID: 489137174128318613}
   - component: {fileID: 2138468907320280983}
-  - component: {fileID: 428447551660711949}
   - component: {fileID: -7433472164971518780}
   m_Layer: 12
   m_Name: Grenade
@@ -116,24 +115,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &428447551660711949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450973731740136755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bda3b08a188a94ebc9833a420f8c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoDestroyTime: 6
-  rb: {fileID: 0}
-  attackDamage: 0
-  hitEffect: {fileID: 2501312620747898427, guid: 055b95a6bda30cc4e978ad21a06f6ec2, type: 3}
-  intensity: 3
-  time: 0.75
 --- !u!114 &-7433472164971518780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,5 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc4595b9578c834289e0222f4914156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoDestroyTime: 6
+  rb: {fileID: 0}
+  attackDamage: 0
+  hitEffect: {fileID: 2501312620747898427, guid: 055b95a6bda30cc4e978ad21a06f6ec2, type: 3}
+  intensity: 2
+  time: 0.75
   areaOfEffectRadius: 4
   delay: 5

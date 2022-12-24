@@ -1,47 +1,47 @@
-using System.Collections;
 using UnityEngine;
 
 public class Ranged : MonoBehaviour
 {
+    public Projectile projectile;
+
+    [HideInInspector] public ObjectPool bulletPool;
+    [HideInInspector] public Transform firePoint;
     [HideInInspector] public GameObject inventory;
 
     [HideInInspector] public int attackDamage;
     [HideInInspector] public float bulletSpeed;
-
     [HideInInspector] public float fireRate;
 
     [HideInInspector] public int maxAmmo;
     [ReadOnly] public int currentAmmo;
-
     [HideInInspector] public float reloadTime;
-
+    [HideInInspector] public bool isReloading = false;
 
     [HideInInspector] public float spreadFactor = 0f;
-
     [HideInInspector] public int projectilesPerVolley = 1;
     [HideInInspector] public float timeBetweenVolley = 0f;
+    [HideInInspector] public float nextTimeToFire;
+    [HideInInspector] public bool burstAttackFinished = true;
 
-    [HideInInspector] public Transform firePoint;
+    [HideInInspector] public bool mainHandAbleToShoot = false;
+    [HideInInspector] public bool offHandAbleToShoot = false;
 
-    public Projectile bulletPrefab;
-    [HideInInspector]  public ObjectPool bulletPool;
-
-    private void Awake()
+    public void Awake()
     {
-        bulletPool = ObjectPool.CreateInstance(bulletPrefab, 40);
+        bulletPool = ObjectPool.CreateInstance(projectile, 40);
         
         var newBulletPool = GameObject.FindGameObjectsWithTag("Object Pool");
 
         if (transform.parent.tag == "Main Hand")
             for (int i = 0; i < newBulletPool.Length; i++)
             {
-                if (newBulletPool[i].name == bulletPrefab.name + " Pool")
+                if (newBulletPool[i].name == projectile.name + " Pool")
                     newBulletPool[i].tag = "Main Object Pool";
             }
         if (transform.parent.tag == "Off Hand")
             for (int i = 0; i < newBulletPool.Length; i++)
             {
-                if (newBulletPool[i].name == bulletPrefab.name + " Pool")
+                if (newBulletPool[i].name == projectile.name + " Pool")
                     newBulletPool[i].tag = "Off Object Pool";
             }
     }
@@ -63,6 +63,11 @@ public class Ranged : MonoBehaviour
             return child;
         }
         firePoint = FindChildWithTag(gameObject, "Fire Point").transform;
+    }
+
+    private void OnEnable()
+    {
+        isReloading = false;
     }
 
     private void OnDestroy()

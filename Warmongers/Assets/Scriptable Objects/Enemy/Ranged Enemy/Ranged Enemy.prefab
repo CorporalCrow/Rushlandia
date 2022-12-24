@@ -109,7 +109,7 @@ MonoBehaviour:
   damage: 10
   attackDelay: 0.5
   agent: {fileID: 2946683600701062957}
-  bulletPrefab: {fileID: 9018232958300857776, guid: be5164fcc84d5a241ac8127e93634328, type: 3}
+  bulletPrefab: {fileID: 316431326712967738, guid: d4153459cf9c74341a23e00c8ad11bff, type: 3}
   bulletSpawnOffset: {x: 0, y: 0, z: 0.5}
   mask:
     serializedVersion: 2

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6801721627559979518}
   - component: {fileID: 5320203002690795321}
   - component: {fileID: 489137174128318613}
-  - component: {fileID: 4959865251138081947}
   - component: {fileID: -548109644195561900}
   m_Layer: 11
   m_Name: Rocket
@@ -116,24 +115,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4959865251138081947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450973731740136755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bda3b08a188a94ebc9833a420f8c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoDestroyTime: 5
-  rb: {fileID: 0}
-  attackDamage: 0
-  hitEffect: {fileID: 2501312620747898427, guid: 1f092c31e7f6faf49817bffd5acb290d, type: 3}
-  intensity: 2
-  time: 1
 --- !u!114 &-548109644195561900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,5 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16e238d9d24a694f9f9fae0610e93a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoDestroyTime: 5
+  rb: {fileID: 0}
+  attackDamage: 0
+  hitEffect: {fileID: 2501312620747898427, guid: 1f092c31e7f6faf49817bffd5acb290d, type: 3}
+  intensity: 2
+  time: 1
   areaOfEffectRadius: 5
   acceleration: 1.075
