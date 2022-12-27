@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: b8003186f00d288418bf6d304978ef4f, type: 3}
+  sprite: {fileID: 21300000, guid: b8003186f00d288418bf6d304978ef4f, type: 3}
   itemPrefab: {fileID: 5713644245566484430, guid: efbef9efa393452459463c4c3a9dccc0, type: 3}
-  ammoDisplay: {fileID: 4703066472931438897, guid: 4c1018246b9f3d5499d15270a6c40633, type: 3}
+  uiDisplay: {fileID: 4703066472931438898, guid: 4c1018246b9f3d5499d15270a6c40633, type: 3}
   stackable: 0
   type: 3
   description: Pew pew. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

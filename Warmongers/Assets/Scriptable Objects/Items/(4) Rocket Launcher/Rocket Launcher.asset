@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 3c60d5b5c6abc4744bf2e34d942225a5, type: 3}
+  sprite: {fileID: 21300000, guid: 3c60d5b5c6abc4744bf2e34d942225a5, type: 3}
   itemPrefab: {fileID: 5713644245566484430, guid: ea644bd4b5b3d744d8cdcdb3fc9c3491, type: 3}
-  ammoDisplay: {fileID: 4703066472931438897, guid: 3090e4ab0d3a0a347a38bd07965af13b, type: 3}
+  uiDisplay: {fileID: 4703066472931438898, guid: 3090e4ab0d3a0a347a38bd07965af13b, type: 3}
   stackable: 0
   type: 3
   description: It acclerates! Lorem ipsum dolor sit amet, consectetur adipiscing

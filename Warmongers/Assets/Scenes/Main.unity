@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 25529300}
   - component: {fileID: 25529299}
   - component: {fileID: 25529298}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2897,7 +2897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &303428468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2911,10 +2911,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1582391310}
-  numberOfEnemiesToSpawn: 1
+  numberOfEnemiesToSpawn: 5
   spawnDelay: 2
-  enemyPrefabs:
-  - {fileID: 5061042268315289153, guid: aaeb75f4748f95347bc19bdfbc3e7dc9, type: 3}
+  enemies:
+  - {fileID: 11400000, guid: c74a98abedf8f5242b91041e46ca40aa, type: 2}
+  - {fileID: 11400000, guid: 19c4c25068204ad408ac05d9e9dbd4ac, type: 2}
+  - {fileID: 11400000, guid: b2569a3e76545b543b256f80de55aeb3, type: 2}
   enemySpawnMethod: 0
 --- !u!4 &303428469
 Transform:
@@ -3002,7 +3004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 320471834}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3821,7 +3823,7 @@ GameObject:
   - component: {fileID: 426644682}
   - component: {fileID: 426644684}
   - component: {fileID: 426644683}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3902,7 +3904,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4385,7 +4387,7 @@ GameObject:
   - component: {fileID: 537706046}
   - component: {fileID: 537706048}
   - component: {fileID: 537706047}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4466,7 +4468,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4530,7 +4532,7 @@ GameObject:
   - component: {fileID: 628875523}
   - component: {fileID: 628875522}
   - component: {fileID: 628875521}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,7 +4855,7 @@ GameObject:
   - component: {fileID: 739688438}
   - component: {fileID: 739688440}
   - component: {fileID: 739688439}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5115,7 +5117,7 @@ GameObject:
   - component: {fileID: 814349945}
   - component: {fileID: 814349944}
   - component: {fileID: 814349943}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5175,7 +5177,7 @@ GameObject:
   - component: {fileID: 839756625}
   - component: {fileID: 839756627}
   - component: {fileID: 839756626}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5256,7 +5258,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5273,7 +5275,7 @@ GameObject:
   - component: {fileID: 840090707}
   - component: {fileID: 840090706}
   - component: {fileID: 840090705}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5333,7 +5335,7 @@ GameObject:
   - component: {fileID: 847935433}
   - component: {fileID: 847935432}
   - component: {fileID: 847935431}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5393,7 +5395,7 @@ GameObject:
   - component: {fileID: 929975069}
   - component: {fileID: 929975071}
   - component: {fileID: 929975070}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5474,7 +5476,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6138,7 +6140,7 @@ GameObject:
   - component: {fileID: 968572913}
   - component: {fileID: 968572915}
   - component: {fileID: 968572914}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6219,7 +6221,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6446,7 +6448,7 @@ GameObject:
   - component: {fileID: 987955132}
   - component: {fileID: 987955134}
   - component: {fileID: 987955133}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6544,7 +6546,7 @@ GameObject:
   - component: {fileID: 993334681}
   - component: {fileID: 993334680}
   - component: {fileID: 993334679}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6604,7 +6606,7 @@ GameObject:
   - component: {fileID: 995152419}
   - component: {fileID: 995152418}
   - component: {fileID: 995152417}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6783,7 +6785,7 @@ GameObject:
   - component: {fileID: 1067923999}
   - component: {fileID: 1067923998}
   - component: {fileID: 1067923997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6919,7 +6921,7 @@ GameObject:
   - component: {fileID: 1118245831}
   - component: {fileID: 1118245833}
   - component: {fileID: 1118245832}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7000,7 +7002,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7311,7 +7313,7 @@ GameObject:
   - component: {fileID: 1364090189}
   - component: {fileID: 1364090191}
   - component: {fileID: 1364090190}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7392,7 +7394,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7422,7 +7424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364623911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1926117}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7520,7 +7522,7 @@ GameObject:
   - component: {fileID: 1374956743}
   - component: {fileID: 1374956742}
   - component: {fileID: 1374956741}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8815,7 +8817,7 @@ GameObject:
   - component: {fileID: 1537664759}
   - component: {fileID: 1537664761}
   - component: {fileID: 1537664760}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9383,7 +9385,7 @@ GameObject:
   - component: {fileID: 1665976438}
   - component: {fileID: 1665976437}
   - component: {fileID: 1665976436}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9931,7 +9933,7 @@ GameObject:
   - component: {fileID: 1812787788}
   - component: {fileID: 1812787787}
   - component: {fileID: 1812787786}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10674,7 +10676,7 @@ GameObject:
   - component: {fileID: 1879426366}
   - component: {fileID: 1879426365}
   - component: {fileID: 1879426364}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Item (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10837,7 +10839,7 @@ GameObject:
   - component: {fileID: 1924545091}
   - component: {fileID: 1924545093}
   - component: {fileID: 1924545092}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10918,7 +10920,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11193,7 +11195,7 @@ GameObject:
   - component: {fileID: 2079320383}
   - component: {fileID: 2079320385}
   - component: {fileID: 2079320384}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11274,7 +11276,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

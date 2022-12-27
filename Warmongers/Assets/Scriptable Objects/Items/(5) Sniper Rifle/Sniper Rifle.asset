@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: Sniper Rifle
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: fa21cd665a9a8284085ffa2e317f9085, type: 3}
+  sprite: {fileID: 21300000, guid: fa21cd665a9a8284085ffa2e317f9085, type: 3}
   itemPrefab: {fileID: 5713644245566484430, guid: 8e0a6401c8310d44c8a23a00400eba6e, type: 3}
-  ammoDisplay: {fileID: 4703066472931438897, guid: 255c38390e57f2b4c945ac433013e12c, type: 3}
+  uiDisplay: {fileID: 4703066472931438898, guid: 255c38390e57f2b4c945ac433013e12c, type: 3}
   stackable: 0
   type: 3
   description: Too fast. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

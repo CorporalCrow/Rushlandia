@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 5bc3528819928c2498e8682109500edb, type: 3}
+  sprite: {fileID: 21300000, guid: 5bc3528819928c2498e8682109500edb, type: 3}
   itemPrefab: {fileID: 5713644245566484430, guid: b4c7d49479fb16643a457f2e277257a7, type: 3}
-  ammoDisplay: {fileID: 4703066472931438897, guid: 1fb9a7d568392e444b7e7bdfad25e1cc, type: 3}
+  uiDisplay: {fileID: 4703066472931438898, guid: 1fb9a7d568392e444b7e7bdfad25e1cc, type: 3}
   stackable: 0
   type: 3
   description: AK-47. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur

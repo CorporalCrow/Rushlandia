@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 3a4f24d38bde6764284239f01f356138, type: 3}
+  sprite: {fileID: 21300000, guid: 3a4f24d38bde6764284239f01f356138, type: 3}
   itemPrefab: {fileID: 5713644245566484430, guid: f57fcaf3e478c05459b66faa6cac4d90, type: 3}
-  ammoDisplay: {fileID: 4703066472931438897, guid: 69720b3dfff60d04cb860696c14b0291, type: 3}
+  uiDisplay: {fileID: 4703066472931438898, guid: 69720b3dfff60d04cb860696c14b0291, type: 3}
   stackable: 0
   type: 3
   description: x5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur

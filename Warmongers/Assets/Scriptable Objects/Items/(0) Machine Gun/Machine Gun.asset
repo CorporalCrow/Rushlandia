@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: Machine Gun
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 35050e4e072dcf94b968fcdfa912ce07, type: 3}
+  sprite: {fileID: 21300000, guid: 35050e4e072dcf94b968fcdfa912ce07, type: 3}
   itemPrefab: {fileID: 5713644245566484430, guid: 4ddb949831c290b4dbb1f0714a7db56b, type: 3}
-  ammoDisplay: {fileID: 4703066472931438897, guid: 0a32e54db88afd3488a4f11c42dbbf35, type: 3}
+  uiDisplay: {fileID: 4703066472931438898, guid: 0a32e54db88afd3488a4f11c42dbbf35, type: 3}
   stackable: 0
   type: 3
   description: It's a machine gun. Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -30,8 +30,8 @@ MonoBehaviour:
     buffs:
     - attribute: 3
       value: 0
-      min: 3
-      max: 5
+      min: 2
+      max: 3
     - attribute: 4
       value: 0
       min: 40
