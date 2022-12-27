@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
                                 case ItemType.Ranged:
                                     mainHand = Instantiate(_slot.ItemObject.itemPrefab, mainHandTransform).transform;
 
-                                    mainHandAmmo = Instantiate(_slot.ItemObject.ammoDisplay, mainHandAmmoTransform).transform;
+                                    mainHandAmmo = Instantiate(_slot.ItemObject.uiDisplay, mainHandAmmoTransform).transform;
                                     mainHandAmmo.GetComponent<AmmoDisplayText>().targetWeapon = mainHand.gameObject;
 
                                     for (int i = 0; i < equipment.Container.Slots.Length; i++)
@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
                                 case ItemType.Ranged:
                                     offHand = Instantiate(_slot.ItemObject.itemPrefab, offHandTransform).transform;
                                     
-                                    offHandAmmo = Instantiate(_slot.ItemObject.ammoDisplay, offHandAmmoTransform).transform;
+                                    offHandAmmo = Instantiate(_slot.ItemObject.uiDisplay, offHandAmmoTransform).transform;
                                     offHandAmmo.GetComponent<AmmoDisplayText>().targetWeapon = offHand.gameObject;
 
                                     for (int i = 0; i < equipment.Container.Slots.Length; i++)

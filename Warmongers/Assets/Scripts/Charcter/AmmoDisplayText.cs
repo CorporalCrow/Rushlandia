@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class AmmoDisplayText : MonoBehaviour
 {
     public GameObject targetWeapon;
-    public Text ammoDisplay;
+    public Text uiDisplay;
 
     void Start()
     {
-        ammoDisplay = this.GetComponent<Text>();
+        uiDisplay = this.GetComponent<Text>();
     }
 
     void Update()
@@ -20,11 +20,11 @@ public class AmmoDisplayText : MonoBehaviour
     {
         if (targetWeapon.GetComponent<Ranged>().currentAmmo > 0)
         {
-            ammoDisplay.text = targetWeapon.GetComponent<Ranged>().currentAmmo.ToString();
+            uiDisplay.text = targetWeapon.GetComponent<Ranged>().currentAmmo.ToString();
         }
         else
         {
-            ammoDisplay.text = "Reloading...";
+            uiDisplay.text = "Reloading...";
         }
     }
 }

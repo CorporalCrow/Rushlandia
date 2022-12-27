@@ -27,12 +27,12 @@ public enum Attributes
     VolleyDelay
 }
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/Item")]
+[CreateAssetMenu(fileName = "Item Configuration", menuName = "ScriptableObject/Item Configuration")]
 public class ItemObject : ScriptableObject
 {
-    public Sprite uiDisplay;
+    public Sprite sprite;
     public GameObject itemPrefab;
-    public Text ammoDisplay;
+    public GameObject uiDisplay;
     public bool stackable;
     public ItemType type;
     [TextArea(15, 20)]
@@ -66,7 +66,7 @@ public class Item
         Name = item.name;
         Id = item.data.Id;
         Description = item.description;
-        uiSprite = item.uiDisplay;
+        uiSprite = item.sprite;
         buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {

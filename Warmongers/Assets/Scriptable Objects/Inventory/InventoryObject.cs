@@ -13,7 +13,7 @@ public enum InterfaceType
     Chest
 }
 
-[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
+[CreateAssetMenu(fileName = "Inventory", menuName = "ScriptableObject/Inventory")]
 public class InventoryObject : ScriptableObject
 {
     public string savePath;

@@ -95,7 +95,8 @@ public class Gun : Ranged
                 }
             }
 
-            yield return new WaitForSeconds(timeBetweenVolley);
+            if (timeBetweenVolley > 0)
+                yield return new WaitForSeconds(timeBetweenVolley);
         }
         burstAttackFinished = true;
     }

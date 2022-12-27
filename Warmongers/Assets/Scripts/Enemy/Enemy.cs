@@ -8,8 +8,7 @@ public class Enemy : PoolableObject, IDamageable
     public AttackRadius attackRadius;
     public EnemyMovement movement;
     public NavMeshAgent agent;
-    public EnemyScriptableObject enemyScriptableObject;
-    public int health = 100;
+    [ReadOnly] public int health;
 
     private Coroutine lookCoroutine;
 
@@ -44,38 +43,11 @@ public class Enemy : PoolableObject, IDamageable
         transform.rotation = lookRotation;
     }
 
-    public virtual void OnEnable()
-    {
-        SetupAgentConfiguration();
-    }
-
     public override void OnDisable()
     {
         base.OnDisable();
 
         agent.enabled = false;
-    }
-
-    public virtual void SetupAgentConfiguration()
-    {
-        agent.acceleration = enemyScriptableObject.acceleration;
-        agent.angularSpeed = enemyScriptableObject.angularSpeed;
-        agent.areaMask = enemyScriptableObject.areaMask;
-        agent.avoidancePriority = enemyScriptableObject.avoidancePriority;
-        agent.baseOffset = enemyScriptableObject.baseOffset;
-        agent.height = enemyScriptableObject.height;
-        agent.obstacleAvoidanceType = enemyScriptableObject.obstacleAvoidanceType;
-        agent.radius = enemyScriptableObject.radius;
-        agent.speed = enemyScriptableObject.speed;
-        agent.stoppingDistance = enemyScriptableObject.stoppingDistance;
-
-        movement.updateRate = enemyScriptableObject.aIUpdateInterval;
-
-        health = enemyScriptableObject.health;
-
-        (attackRadius.Collider == null ? attackRadius.GetComponent<SphereCollider>() : attackRadius.Collider).radius = enemyScriptableObject.attackRadius;
-        attackRadius.attackDelay = enemyScriptableObject.attackDelay;
-        attackRadius.damage = enemyScriptableObject.damage;
     }
 
     public void TakeDamage(int damage)
