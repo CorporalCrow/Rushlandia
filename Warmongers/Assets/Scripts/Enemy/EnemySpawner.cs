@@ -56,15 +56,21 @@ public class EnemySpawner : MonoBehaviour
     {
         int SpawnIndex = SpawnedEnemies % enemies.Count;
 
-        DoSpawnEnemy(SpawnIndex);
+        DoSpawnEnemy(SpawnIndex, ChooseRandomPositionOnNavMesh());
     }
 
     private void SpawnRandomEnemy()
     {
-        DoSpawnEnemy(Random.Range(0, enemies.Count));
+        DoSpawnEnemy(Random.Range(0, enemies.Count), ChooseRandomPositionOnNavMesh());
     }
 
-    private void DoSpawnEnemy(int SpawnIndex)
+    private Vector3 ChooseRandomPositionOnNavMesh()
+    {
+        int VertexIndex = Random.Range(0, triangulation.vertices.Length);
+        return triangulation.vertices[VertexIndex]; 
+    }
+
+    public void DoSpawnEnemy(int SpawnIndex, Vector3 spawnPosition)
     {
         PoolableObject poolableObject = enemyObjectPools[SpawnIndex].GetObject();
 
@@ -73,20 +79,19 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemy = poolableObject.GetComponent<Enemy>();
             enemies[SpawnIndex].SetUpEnemy(enemy);
 
-            int VertexIndex = Random.Range(0, triangulation.vertices.Length);
-
             NavMeshHit Hit;
-            if (NavMesh.SamplePosition(triangulation.vertices[VertexIndex], out Hit, 2f, -1))
+            if (NavMesh.SamplePosition(spawnPosition, out Hit, 2f, -1))
             {
                 enemy.agent.Warp(Hit.position);
                 // enemy needs to get enabled and start chasing now.
                 enemy.movement.player = player;
+                enemy.movement.triangulation = triangulation;
                 enemy.agent.enabled = true;
-                enemy.movement.StartChasing();
+                enemy.movement.Spawn();
             }
             else
             {
-                Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {triangulation.vertices[VertexIndex]}");
+                Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {spawnPosition}");
             }
         }
         else

@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5061042268315289153, guid: a1d83b6ade51d9a45804157706021526, type: 3}
   attackConfiguration: {fileID: 11400000, guid: e513c5f8b1328c54ebcc8ab2f4fa94a3, type: 2}
-  health: 50
+  health: 40
+  defaultState: 2
+  idleLocationRadius: 4
+  idleMovespeedMultiplier: 0.5
+  waypoints: 4
+  lineOfSightRange: 14
+  fieldOfView: 360
   aIUpdateInterval: 0.1
   acceleration: 8
   angularSpeed: 120
@@ -25,4 +31,4 @@ MonoBehaviour:
   obstacleAvoidanceType: 1
   radius: 0.5
   speed: 5
-  stoppingDistance: 6
+  stoppingDistance: 12

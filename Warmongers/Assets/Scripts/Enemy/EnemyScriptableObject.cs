@@ -10,7 +10,16 @@ public class EnemyScriptableObject : ScriptableObject
     // Enemy Stats
     public int health = 100;
 
-    //NavMeshAgent Configuration
+    // Movement State
+    public EnemyState defaultState;
+    public float idleLocationRadius = 4f;
+    public float idleMovespeedMultiplier = 0.5f;
+    [Range(2, 10)]
+    public int waypoints = 4;
+    public float lineOfSightRange = 6f;
+    public float fieldOfView = 90f;
+
+    // NavMeshAgent Configuration
     public float aIUpdateInterval = 0.1f;
 
     public float acceleration = 8;
@@ -39,6 +48,13 @@ public class EnemyScriptableObject : ScriptableObject
         enemy.agent.stoppingDistance = stoppingDistance;
 
         enemy.movement.updateRate = aIUpdateInterval;
+        enemy.movement.defaultState = defaultState;
+        enemy.movement.idleMovespeedMultiplier = idleMovespeedMultiplier;
+        enemy.movement.idleLocationRadius = idleLocationRadius;
+        enemy.movement.waypoints = new Vector3[waypoints];
+        enemy.movement.lineOfSightChecker.fieldOfView = fieldOfView;
+        enemy.movement.lineOfSightChecker.collider.radius = lineOfSightRange;
+        enemy.movement.lineOfSightChecker.lineOfSightLayers = attackConfiguration.lineOfSightLayers;
 
         enemy.health = health;
 
