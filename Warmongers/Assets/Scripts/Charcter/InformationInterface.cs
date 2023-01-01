@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class InformationInterface : MonoBehaviour
 {    
     [SerializeField]
-    private InventoryObject mainInventory;
+    private InventoryScriptableObject mainInventory;
     [SerializeField]
-    private InventoryObject mainEquipment;
+    private InventoryScriptableObject mainEquipment;
     public InventorySlot[] inventorySlots { get { return mainInventory.Container.Slots; } }
     public InventorySlot[] equipmentSlots { get { return mainEquipment.Container.Slots; } }
 

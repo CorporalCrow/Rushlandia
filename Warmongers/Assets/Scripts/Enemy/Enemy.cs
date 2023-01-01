@@ -9,6 +9,8 @@ public class Enemy : PoolableObject, IDamageable
     public EnemyMovement movement;
     public NavMeshAgent agent;
     [ReadOnly] public int health;
+    public delegate void deathEvent(Enemy enemy);
+    public deathEvent onDie;
 
     private Coroutine lookCoroutine;
 
@@ -48,6 +50,7 @@ public class Enemy : PoolableObject, IDamageable
         base.OnDisable();
 
         agent.enabled = false;
+        onDie = null;
     }
 
     public void TakeDamage(int damage)
@@ -56,6 +59,7 @@ public class Enemy : PoolableObject, IDamageable
 
         if (health <= 0)
         {
+            onDie?.Invoke(this);
             gameObject.SetActive(false);
         }
     }

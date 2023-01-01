@@ -6,10 +6,10 @@ public class Player : MonoBehaviour
     PlayerStats playerStats;
     PlayerController playerController;
 
-    [HideInInspector] public ItemObject[] ItemObjects;
+    [HideInInspector] public ItemScriptableObject[] ItemObjects;
 
-    public InventoryObject inventory;
-    public InventoryObject equipment;
+    public InventoryScriptableObject inventory;
+    public InventoryScriptableObject equipment;
 
     public Attribute[] attributes;
 
@@ -48,14 +48,14 @@ public class Player : MonoBehaviour
 
     public void OnRemoveItem(InventorySlot _slot)
     {
-        if (_slot.ItemObject == null)
+        if (_slot.ItemScriptableObject == null)
             return;
         switch (_slot.parent.inventory.type)
         {
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                print(string.Concat("Removed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
+                print(string.Concat("Removed ", _slot.ItemScriptableObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
 
                 for (int i = 0; i < _slot.item.buffs.Length; i++)
                 {
@@ -66,12 +66,12 @@ public class Player : MonoBehaviour
                     }
                 }
 
-                if (_slot.ItemObject.itemPrefab != null)
+                if (_slot.ItemScriptableObject.itemPrefab != null)
                 {
                     switch (_slot.AllowedItems[0])
                     {
                         case ItemType.Weapon:
-                            switch (_slot.ItemObject.type)
+                            switch (_slot.ItemScriptableObject.type)
                             {
                                 case ItemType.Weapon:
                                     if (mainHand != null)
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
                             }
                             break;
                         case ItemType.Ranged:
-                            switch (_slot.ItemObject.type)
+                            switch (_slot.ItemScriptableObject.type)
                             {
                                 case ItemType.Weapon:
                                     if (offHand != null)
@@ -122,14 +122,14 @@ public class Player : MonoBehaviour
 
     public void OnAddItem(InventorySlot _slot)
     {
-        if (_slot.ItemObject == null)
+        if (_slot.ItemScriptableObject == null)
             return;
         switch (_slot.parent.inventory.type)
         {
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                print(string.Concat("Placed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
+                print(string.Concat("Placed ", _slot.ItemScriptableObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
 
                 for (int i = 0; i < _slot.item.buffs.Length; i++)
                 {
@@ -140,25 +140,25 @@ public class Player : MonoBehaviour
                     }
                 }
 
-                if (_slot.ItemObject.itemPrefab != null)
+                if (_slot.ItemScriptableObject.itemPrefab != null)
                 {
                     switch (_slot.AllowedItems[0])
                     {
                         case ItemType.Weapon:
-                            switch (_slot.ItemObject.type)
+                            switch (_slot.ItemScriptableObject.type)
                             {
                                 case ItemType.Weapon:
-                                    mainHand = Instantiate(_slot.ItemObject.itemPrefab, mainHandTransform).transform;
+                                    mainHand = Instantiate(_slot.ItemScriptableObject.itemPrefab, mainHandTransform).transform;
                                     break;
                                 case ItemType.Ranged:
-                                    mainHand = Instantiate(_slot.ItemObject.itemPrefab, mainHandTransform).transform;
+                                    mainHand = Instantiate(_slot.ItemScriptableObject.itemPrefab, mainHandTransform).transform;
 
-                                    mainHandAmmo = Instantiate(_slot.ItemObject.uiDisplay, mainHandAmmoTransform).transform;
+                                    mainHandAmmo = Instantiate(_slot.ItemScriptableObject.uiDisplay, mainHandAmmoTransform).transform;
                                     mainHandAmmo.GetComponent<AmmoDisplayText>().targetWeapon = mainHand.gameObject;
 
                                     for (int i = 0; i < equipment.Container.Slots.Length; i++)
                                     {
-                                        if (equipmentSlots[i].item.Id == _slot.ItemObject.data.Id)
+                                        if (equipmentSlots[i].item.Id == _slot.ItemScriptableObject.data.Id)
                                         {
                                             for (int j = 0; j < equipmentSlots[i].item.buffs.Length; j++)
                                             {
@@ -196,20 +196,20 @@ public class Player : MonoBehaviour
                             }
                             break;
                         case ItemType.Ranged:
-                            switch (_slot.ItemObject.type)
+                            switch (_slot.ItemScriptableObject.type)
                             {
                                 case ItemType.Weapon:
-                                    offHand = Instantiate(_slot.ItemObject.itemPrefab, offHandTransform).transform;
+                                    offHand = Instantiate(_slot.ItemScriptableObject.itemPrefab, offHandTransform).transform;
                                     break;
                                 case ItemType.Ranged:
-                                    offHand = Instantiate(_slot.ItemObject.itemPrefab, offHandTransform).transform;
+                                    offHand = Instantiate(_slot.ItemScriptableObject.itemPrefab, offHandTransform).transform;
                                     
-                                    offHandAmmo = Instantiate(_slot.ItemObject.uiDisplay, offHandAmmoTransform).transform;
+                                    offHandAmmo = Instantiate(_slot.ItemScriptableObject.uiDisplay, offHandAmmoTransform).transform;
                                     offHandAmmo.GetComponent<AmmoDisplayText>().targetWeapon = offHand.gameObject;
 
                                     for (int i = 0; i < equipment.Container.Slots.Length; i++)
                                     {
-                                        if (equipmentSlots[i].item.Id == _slot.ItemObject.data.Id)
+                                        if (equipmentSlots[i].item.Id == _slot.ItemScriptableObject.data.Id)
                                         {
                                             for (int j = 0; j < equipmentSlots[i].item.buffs.Length; j++)
                                             {

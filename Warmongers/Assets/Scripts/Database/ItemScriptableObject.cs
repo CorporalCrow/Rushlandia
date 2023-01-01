@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public enum ItemType 
 {
@@ -28,7 +27,7 @@ public enum Attributes
 }
 
 [CreateAssetMenu(fileName = "Item Configuration", menuName = "ScriptableObject/Item Configuration")]
-public class ItemObject : ScriptableObject
+public class ItemScriptableObject : ScriptableObject
 {
     public Sprite sprite;
     public GameObject itemPrefab;
@@ -61,7 +60,7 @@ public class Item
         Name = "";
         Id = -1;
     }
-    public Item(ItemObject item)
+    public Item(ItemScriptableObject item)
     {
         Name = item.name;
         Id = item.data.Id;

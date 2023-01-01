@@ -71,7 +71,7 @@ public class Gun : Ranged
 
         for (int i = 0; i < projectilesPerVolley; i++)
         {
-            var direction = transform.forward;
+            var direction = transform.parent.parent.forward;
             direction.x += Random.Range(-spreadFactor, spreadFactor);
             direction.z += Random.Range(-spreadFactor, spreadFactor);
 

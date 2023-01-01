@@ -14,10 +14,10 @@ public enum InterfaceType
 }
 
 [CreateAssetMenu(fileName = "Inventory", menuName = "ScriptableObject/Inventory")]
-public class InventoryObject : ScriptableObject
+public class InventoryScriptableObject : ScriptableObject
 {
     public string savePath;
-    public ItemDatabaseObject database;
+    public ItemDatabaseScriptableObject database;
     public InterfaceType type;
     public Inventory Container;
     public InventorySlot[] GetSlots { get { return Container.Slots; } }
@@ -78,7 +78,7 @@ public class InventoryObject : ScriptableObject
 
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
-        if(item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject))
+        if(item2.CanPlaceInSlot(item1.ItemScriptableObject) && item1.CanPlaceInSlot(item2.ItemScriptableObject))
         {
             InventorySlot temp = new InventorySlot( item2.item, item2.amount);
             item2.UpdateSlot(item1.item, item1.amount);
@@ -157,7 +157,7 @@ public class InventorySlot
     public Item item = new Item();
     public int amount;
 
-    public ItemObject ItemObject
+    public ItemScriptableObject ItemScriptableObject
     {
         get
         {
@@ -194,7 +194,7 @@ public class InventorySlot
     {
         UpdateSlot(item, amount += value);
     }
-    public bool CanPlaceInSlot(ItemObject _itemObject)
+    public bool CanPlaceInSlot(ItemScriptableObject _itemObject)
     {
         if (AllowedItems.Length <= 0 || _itemObject == null || _itemObject.data.Id < 0)
             return true;

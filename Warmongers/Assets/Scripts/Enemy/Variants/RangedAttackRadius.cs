@@ -25,9 +25,9 @@ public class RangedAttackRadius : AttackRadius
 
     protected override IEnumerator Attack()
     {
-        WaitForSeconds Wait = new WaitForSeconds(attackDelay);
+        WaitForSeconds wait = new WaitForSeconds(attackDelay);
 
-        yield return Wait;
+        yield return wait;
 
         while (damageables.Count > 0)
         {
@@ -60,7 +60,7 @@ public class RangedAttackRadius : AttackRadius
                 agent.enabled = true; // no target in line of sight, keep trying to get closer
             }
 
-            yield return Wait;
+            yield return wait;
 
             if (targetDamageable == null || !HasLineOfSightTo(targetDamageable.GetTransform()))
             {

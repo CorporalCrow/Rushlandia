@@ -18,12 +18,18 @@ public class AttackRadius : MonoBehaviour
         Collider = GetComponent<SphereCollider>();
     }
 
+    private void OnEnable()
+    {
+        attackCoroutine = null;
+    }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageables.Add(damageable);
+            Debug.Log("Attacking!");
 
             if (attackCoroutine == null)
             {
@@ -48,9 +54,9 @@ public class AttackRadius : MonoBehaviour
 
     protected virtual IEnumerator Attack()
     {
-        WaitForSeconds Wait = new WaitForSeconds(attackDelay);
+        WaitForSeconds wait = new WaitForSeconds(attackDelay);
 
-        yield return Wait;
+        yield return wait;
 
         IDamageable closestDamageable = null;
         float closestDistance = float.MaxValue;
@@ -78,7 +84,7 @@ public class AttackRadius : MonoBehaviour
             closestDamageable = null;
             closestDistance = float.MaxValue;
 
-            yield return Wait;
+            yield return wait;
 
             damageables.RemoveAll(DisabledDamageables);
         }

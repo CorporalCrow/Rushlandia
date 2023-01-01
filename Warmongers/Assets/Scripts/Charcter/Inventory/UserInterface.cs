@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public abstract class UserInterface : MonoBehaviour
 {
 
-    public InventoryObject inventory;
+    public InventoryScriptableObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
     void Start()
     {
@@ -27,7 +27,7 @@ public abstract class UserInterface : MonoBehaviour
     {
         if (_slot.item.Id >= 0)
         {
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.ItemObject.sprite;
+            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.ItemScriptableObject.sprite;
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
             _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = _slot.amount == 1 ? "" : _slot.amount.ToString("n0");
         }
@@ -53,10 +53,10 @@ public abstract class UserInterface : MonoBehaviour
     public void OnClick(GameObject obj)
     {
         var infoInterface = GameObject.FindGameObjectWithTag("Information Interface").GetComponent<InformationInterface>();
-        if (slotsOnInterface[obj].ItemObject == null)
+        if (slotsOnInterface[obj].ItemScriptableObject == null)
             infoInterface.GetInfo(-1);
         else
-            infoInterface.GetInfo(slotsOnInterface[obj].ItemObject.data.Id);
+            infoInterface.GetInfo(slotsOnInterface[obj].ItemScriptableObject.data.Id);
     }
     public void OnEnter(GameObject obj)
     {
@@ -79,10 +79,10 @@ public abstract class UserInterface : MonoBehaviour
     {
         MouseData.tempItemBeingDragged = CreateTempItem(obj);
         var infoInterface = GameObject.FindGameObjectWithTag("Information Interface").GetComponent<InformationInterface>();
-        if (slotsOnInterface[obj].ItemObject == null)
+        if (slotsOnInterface[obj].ItemScriptableObject == null)
             infoInterface.GetInfo(-1);
         else
-            infoInterface.GetInfo(slotsOnInterface[obj].ItemObject.data.Id);
+            infoInterface.GetInfo(slotsOnInterface[obj].ItemScriptableObject.data.Id);
     }
     public GameObject CreateTempItem(GameObject obj)
     {
@@ -95,7 +95,7 @@ public abstract class UserInterface : MonoBehaviour
             rt.anchorMin = new Vector2(0, 0);
             rt.anchorMax = new Vector2(0.01f, 0.01f);
             var img = tempItem.AddComponent<Image>();
-            img.sprite = slotsOnInterface[obj].ItemObject.sprite;
+            img.sprite = slotsOnInterface[obj].ItemScriptableObject.sprite;
             img.raycastTarget = false;
             tempItem.transform.SetParent(transform.parent, false);
         }
@@ -140,7 +140,7 @@ public static class ExtensionMethods
         {
             if (_slot.Value.item.Id >= 0)
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.sprite;
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemScriptableObject.sprite;
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }

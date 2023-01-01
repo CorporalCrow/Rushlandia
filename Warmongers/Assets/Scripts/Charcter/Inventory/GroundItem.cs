@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver
 {
-    public ItemObject item;
+    public ItemScriptableObject item;
 
     public void OnAfterDeserialize()
     {

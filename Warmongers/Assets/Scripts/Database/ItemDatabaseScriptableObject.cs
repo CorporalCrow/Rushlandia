@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item Database", menuName = "ScriptableObject/Item Database")]
-public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiver
+public class ItemDatabaseScriptableObject : ScriptableObject, ISerializationCallbackReceiver
 {
-    public ItemObject[] ItemObjects;
+    public ItemScriptableObject[] ItemObjects;
 
     [ContextMenu("Update ID's")]
     public void UpdateID()
