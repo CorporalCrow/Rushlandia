@@ -52,12 +52,12 @@ public class EnemyBurstSpawnArea : MonoBehaviour
         {
             if (spawnMethod == EnemySpawner.SpawnMethod.RoundRobin)
             {
-                enemySpawner.DoSpawnEnemy(enemySpawner.enemies.FindIndex((enemy) => enemy.Equals(enemies[i % enemies.Count])), GetRandomPositionInBounds()); ;
+                enemySpawner.DoSpawnEnemy(enemySpawner.weightedEnemies.FindIndex((enemy) => enemy.enemy.Equals(enemies[i % enemies.Count])), GetRandomPositionInBounds()); ;
             }
             else if (spawnMethod == EnemySpawner.SpawnMethod.Random)
             {
                 int index = Random.Range(0, enemies.Count);
-                enemySpawner.DoSpawnEnemy(enemySpawner.enemies.FindIndex((enemy) => enemy.Equals(enemies[index])), GetRandomPositionInBounds());
+                enemySpawner.DoSpawnEnemy(enemySpawner.weightedEnemies.FindIndex((enemy) => enemy.enemy.Equals(enemies[index])), GetRandomPositionInBounds());
             }
 
             yield return Wait;

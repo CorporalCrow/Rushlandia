@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class Enemy : PoolableObject, IDamageable
 {
     public AttackRadius attackRadius;
+    [ReadOnly] public Player player;
+    [ReadOnly] public int level;
     public EnemyMovement movement;
     public NavMeshAgent agent;
     [ReadOnly] public int health;
+    public SkillScriptableObject[] skills;
     public delegate void deathEvent(Enemy enemy);
     public deathEvent onDie;
 
@@ -17,6 +20,17 @@ public class Enemy : PoolableObject, IDamageable
     private void Awake()
     {
         attackRadius.onAttack += OnAttack;
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < skills.Length; i++)
+        {
+            if (skills[i].CanUseSkill(this, player, level))
+            {
+                skills[i].UseSkill(this, player);
+            }
+        }
     }
 
     private void OnAttack(IDamageable target)

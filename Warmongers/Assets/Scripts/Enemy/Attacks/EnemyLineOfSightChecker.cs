@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyLineOfSightChecker : MonoBehaviour
 {
-    public SphereCollider collider;
-    public float fieldOfView = 90f;
+    public SphereCollider _collider;
+    public float fieldOfView = 360f;
     public LayerMask lineOfSightLayers;
 
     public delegate void GainSightEvent(Player player);
@@ -18,7 +18,7 @@ public class EnemyLineOfSightChecker : MonoBehaviour
 
     private void Awake()
     {
-        collider = GetComponent<SphereCollider>();
+        _collider = GetComponent<SphereCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +54,7 @@ public class EnemyLineOfSightChecker : MonoBehaviour
         {
             RaycastHit Hit;
 
-            if (Physics.Raycast(transform.position, Direction, out Hit, collider.radius, lineOfSightLayers))
+            if (Physics.Raycast(transform.position, Direction, out Hit, _collider.radius, lineOfSightLayers))
             {
                 if (Hit.transform.GetComponent<Player>() != null)
                 {

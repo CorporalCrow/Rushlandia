@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95a6eea2a45964408b6bfa7052c2491, type: 3}
-  m_Name: Basic Enemy
+  m_Name: Jumping Enemy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4555176945780710510, guid: dd56cebd02267ee478ad0055a8a48ad6, type: 3}
-  attackConfiguration: {fileID: 11400000, guid: 26cbaf6295cf8bf4abc395d86ef84358, type: 2}
-  skills: []
+  prefab: {fileID: 9208465739548269551, guid: 3cac495d496a4f4479aa2fb4f675b9ee, type: 3}
+  attackConfiguration: {fileID: 11400000, guid: 92f27a643b88e274c9d459fbbbd33e45, type: 2}
+  skills:
+  - {fileID: 11400000, guid: c069a9b9b561d6548b81720ae34e394b, type: 2}
   health: 100
-  defaultState: 1
+  defaultState: 2
   idleLocationRadius: 8
   idleMovespeedMultiplier: 0.5
-  waypoints: 2
+  waypoints: 4
   lineOfSightRange: 12
   fieldOfView: 360
   aIUpdateInterval: 0.1

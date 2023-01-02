@@ -200,10 +200,14 @@ MonoBehaviour:
   player: {fileID: 0}
   lineOfSightChecker: {fileID: 5717722429246828774}
   updateRate: 0.1
-  defaultState: 1
+  defaultState: 0
   idleLocationRadius: 4
   idleMovespeedMultiplier: 0.5
-  waypointIndex: 0
+  waypoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!114 &4555176945780710510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,9 +221,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRadius: {fileID: 387828746413453438}
+  player: {fileID: 0}
+  level: 0
   movement: {fileID: 5904196518866593027}
   agent: {fileID: 5904196518866593026}
   health: 100
+  skills: []
 --- !u!1 &7162203253517416124
 GameObject:
   m_ObjectHideFlags: 0

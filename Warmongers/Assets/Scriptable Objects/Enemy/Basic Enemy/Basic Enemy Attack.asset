@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d02076ac28ed0444f99672573f5231b7, type: 3}
-  m_Name: Basic Enemy Attack Configuration
+  m_Name: Basic Enemy Attack
   m_EditorClassIdentifier: 
   isRanged: 0
   damage: 10
-  attackRadius: 1.5
-  attackDelay: 1.5
+  attackRadius: 2
+  attackDelay: 1
   bulletPrefab: {fileID: 0}
   bulletSpawnOffset: {x: 0, y: 1, z: 0}
   lineOfSightLayers:

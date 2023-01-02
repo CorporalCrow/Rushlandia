@@ -5,13 +5,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform player;
+    [ReadOnly] public Transform player;
     public EnemyLineOfSightChecker lineOfSightChecker;
     public NavMeshTriangulation triangulation;
-    public float updateRate = 0.1f;
+    [ReadOnly] public float updateRate = 0.1f;
     private NavMeshAgent agent;
 
-    public EnemyState defaultState;
+    [ReadOnly] public EnemyState defaultState;
     private EnemyState _state;
     public EnemyState state
     {
@@ -28,11 +28,12 @@ public class EnemyMovement : MonoBehaviour
 
     public delegate void StateChangeEvent(EnemyState oldState, EnemyState newState);
     public StateChangeEvent onStateChange;
-    public float idleLocationRadius = 4f;
-    public float idleMovespeedMultiplier = 0.5f;
-    public Vector3[] waypoints = new Vector3[4];
-    [SerializeField]
+    [ReadOnly] public float idleLocationRadius = 4f;
+    [ReadOnly] public float idleMovespeedMultiplier = 0.5f;
+    [ReadOnly] public Vector3[] waypoints = new Vector3[4];
     private int waypointIndex = 0;
+
+    [HideInInspector] public float defaultSpeed;
 
     private Coroutine followCoroutine;
 
@@ -106,6 +107,8 @@ public class EnemyMovement : MonoBehaviour
                     break;
             }
         }
+
+        oldState = newState;
     }
 
     private IEnumerator DoIdleMotion()

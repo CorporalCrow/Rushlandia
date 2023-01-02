@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform player;
+    public Player player;
     public int numberOfEnemiesToSpawn = 5;
     public float spawnDelay = 1f;
-    public List<EnemyScriptableObject> enemies = new List<EnemyScriptableObject>();
+    public List<WeightedSpawnScriptableObject> weightedEnemies = new List<WeightedSpawnScriptableObject>();
     public ScalingScriptableObject scaling;
     public SpawnMethod enemySpawnMethod = SpawnMethod.RoundRobin;
     public bool continuousSpawning;
@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     private int level = 0;
     [SerializeField]
     private List<EnemyScriptableObject> scaledEnemies = new List<EnemyScriptableObject>();
+    [SerializeField]
+    [ReadOnly] private float[] weights;
 
     private int enemiesAlive = 0;
     private int spawnedEnemies = 0;
@@ -29,11 +31,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < weightedEnemies.Count; i++)
         {
-            enemyObjectPools.Add(i, ObjectPool.CreateInstance(enemies[i].prefab, numberOfEnemiesToSpawn));
+            enemyObjectPools.Add(i, ObjectPool.CreateInstance(weightedEnemies[i].enemy.prefab, numberOfEnemiesToSpawn));
         }
 
+        weights = new float[weightedEnemies.Count];
         initialEnemiesToSpawn = numberOfEnemiesToSpawn;
         initialSpawnDelay = spawnDelay;
     }
@@ -42,9 +45,9 @@ public class EnemySpawner : MonoBehaviour
     {
         triangulation = NavMesh.CalculateTriangulation();
 
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < weightedEnemies.Count; i++)
         {
-            scaledEnemies.Add(enemies[i].ScaleUpForLevel(scaling, 0));
+            scaledEnemies.Add(weightedEnemies[i].enemy.ScaleUpForLevel(scaling, 0));
         }
 
         StartCoroutine(SpawnEnemies());
@@ -55,10 +58,12 @@ public class EnemySpawner : MonoBehaviour
         level++;
         spawnedEnemies = 0;
         enemiesAlive = 0;
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < weightedEnemies.Count; i++)
         {
-            scaledEnemies[i] = enemies[i].ScaleUpForLevel(scaling, level);
+            scaledEnemies[i] = weightedEnemies[i].enemy.ScaleUpForLevel(scaling, level);
         }
+
+        ResetSpawnWeights();
 
         WaitForSeconds Wait = new WaitForSeconds(spawnDelay);
 
@@ -71,6 +76,10 @@ public class EnemySpawner : MonoBehaviour
             else if (enemySpawnMethod == SpawnMethod.Random)
             {
                 SpawnRandomEnemy();
+            }
+            else if (enemySpawnMethod == SpawnMethod.WeightedRandom)
+            {
+                SpawnWeightedRandomEnemy();
             }
 
             spawnedEnemies++;
@@ -85,16 +94,50 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void ResetSpawnWeights()
+    {
+        float totalWeight = 0;
+
+        for (int i = 0; i < weightedEnemies.Count; i++)
+        {
+            weights[i] = weightedEnemies[i].GetWeight();
+            totalWeight += weights[i];
+        }
+
+        for (int i = 0; i < weights.Length; i++)
+        {
+            weights[i] = weights[i] / totalWeight;
+        }
+    }
+
     private void SpawnRoundRobinEnemy(int SpawnedEnemies)
     {
-        int SpawnIndex = SpawnedEnemies % enemies.Count;
+        int SpawnIndex = SpawnedEnemies % weightedEnemies.Count;
 
         DoSpawnEnemy(SpawnIndex, ChooseRandomPositionOnNavMesh());
     }
 
     private void SpawnRandomEnemy()
     {
-        DoSpawnEnemy(Random.Range(0, enemies.Count), ChooseRandomPositionOnNavMesh());
+        DoSpawnEnemy(Random.Range(0, weightedEnemies.Count), ChooseRandomPositionOnNavMesh());
+    }
+
+    private void SpawnWeightedRandomEnemy()
+    {
+        float value = Random.value;
+
+        for (int i = 0; i < weights.Length; i++)
+        {
+            if (value < weights[i])
+            {
+                DoSpawnEnemy(i, ChooseRandomPositionOnNavMesh());
+                return;
+            }
+
+            value -= weights[i];
+        }
+
+        Debug.LogError("Invalid configuration! Could not spawn a Weighted Random Enemy. Did you forget to call ResetSpawnWeights()?");
     }
 
     private Vector3 ChooseRandomPositionOnNavMesh()
@@ -117,11 +160,14 @@ public class EnemySpawner : MonoBehaviour
             {
                 enemy.agent.Warp(Hit.position);
                 // enemy needs to get enabled and start chasing now.
-                enemy.movement.player = player;
+                enemy.movement.player = player.transform;
                 enemy.movement.triangulation = triangulation;
                 enemy.agent.enabled = true;
                 enemy.movement.Spawn();
                 enemy.onDie += HandleEnemyDeath;
+                enemy.level = level;
+                enemy.skills = scaledEnemies[SpawnIndex].skills;
+                enemy.player = player;
 
                 enemiesAlive++;
             }
@@ -156,7 +202,8 @@ public class EnemySpawner : MonoBehaviour
     public enum SpawnMethod
     {
         RoundRobin,
-        Random
+        Random,
+        WeightedRandom
         // Other spawn methods can be added here
     }
 }

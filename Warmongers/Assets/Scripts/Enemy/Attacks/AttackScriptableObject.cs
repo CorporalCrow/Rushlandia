@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Attack Configuration", menuName = "ScriptableObject/Attack Configuration")]
+[CreateAssetMenu(fileName = "Enemy Attack", menuName = "ScriptableObject/Attack Configuration")]
 public class AttackScriptableObject : ScriptableObject
 {
     public bool isRanged = false;

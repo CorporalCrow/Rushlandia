@@ -29,7 +29,6 @@ public class AttackRadius : MonoBehaviour
         if (damageable != null)
         {
             damageables.Add(damageable);
-            Debug.Log("Attacking!");
 
             if (attackCoroutine == null)
             {
